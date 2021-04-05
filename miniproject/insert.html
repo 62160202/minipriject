@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <style>
+
+</style>
+<body background="im/ygsm.jpg">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary "  >
+        <span class="navbar-brand">
+            <h3>IT equipment</h3>
+        </span>
+            <ul class = "navbar-nav nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link" href="search.html">หน้าแรก</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="insert.html">เพิ่มข้อมูล</a>
+                </li>
+            </ul>
+    </nav>
+    <center>
+        <h2>เพิ่มข้อมูล</h2>
+        <form action="insert.php" method="POST" enctype="multipart/form-data">
+            <table >
+                <tr>
+                    <td><label for="Product_Id">รหัสสินค้า:</label></td>
+                    <td><input type="text" name="Product_Id" required><br><br></td>
+                </tr>
+                <tr>
+                    <td><label for="Name_Product">ชื่อสินค้า:</label></td>
+                    <td><input type="text" name="Name_Product" required><br><br></td>
+                </tr>
+                <tr>
+                    <td><label for="Artist_Name">แบรนด์:</label></td>
+                    <td><input type="text" name="Artist_Name" required><br><br></td>
+                </tr>
+                <tr>
+                    <td><label for="Product_Type">ประเภทสินค้า:</label></td>
+                    <td><input type="text" name="Product_Type" required><br><br></td>
+                </tr>
+                <tr>
+                    <td><label for="Status_Product">สถานะ:</label></td>
+                    <td><input type="text" name="Status_Product" required><br><br></td>
+                </tr>
+                <tr>
+                    <td><label for="Price">ราคา:</label></td>
+                    <td><input type="text" name="Price" required><br><br></td>
+                </tr>
+                <tr>
+                    <td><label for="image">รูปภาพสินค้า:</label></td>
+                    <td><input type="file" name="image" required><br><br></td>
+                </tr>
+                <tr align="center">
+                    <td align="center"><button type="submit" name="upload" >เพิ่มข้อมูล</button></td>
+                </tr>
+
+
+            </table>
+        </form>
+    </center>
+
+</body>
+
+
+
+
+

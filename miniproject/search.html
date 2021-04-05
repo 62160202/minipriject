@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href=".css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <style>
+      .grid-container{
+
+          display: grid;
+          justify-content: center;
+          grid-gap: 20px;
+          display:flex;
+          flex-wrap: wrap-reverse;
+
+      }
+      .grid-container > div{
+
+          
+          text-align: center;
+          padding: 30px;
+          font-size: 20px;
+          height: auto;
+          width: 500px;
+
+      }
+  </style>
+
+<body background="im/ygsm.jpg">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary "  >
+        <span class="navbar-brand">
+            <h3>IT equipment</h3>
+        </span>
+            <ul class = "navbar-nav nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link" href="search.html">หน้าแรก</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="insert.html">เพิ่มข้อมูลสินค้า</a>
+                </li>
+            </ul>
+    </nav>
+        <center>
+            <div class="container" >
+                <font color ="black"><h4>ค้นหาสินค้า</h4></font>
+                <input type="text" id="kw">
+                <button onclick="search()"class="btn btn-lg btn-primary">ค้นหา</button><br><br>
+                <button onclick="show()"class="btn btn-lg btn-success">ดูสินค้าทั้งหมด</button><br><br>
+                <h5><div class="grid-container font-size large" id="disp"></div></h5></center>
+            </div>
+</body>
+<script>
+    function show() {
+        kw = document.getElementById('kw').value;
+        var typ = "";
+        console.log("kw=" + kw);
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                arr = JSON.parse(this.responseText);
+                console.log(arr);
+                if (arr.length == 0) {
+                    document.getElementById('disp').innerHTML = "Not found";
+                } else {
+                    html = "";
+                    for (i = 0; i < arr.length; i++) {
+                        html +="<div>"+
+                        "รหัสสินค้า: "+ arr[i].Product_Id + "<br>" + 
+                        "ชื่อสินค้า: "+ arr[i].Name_Product + "<br>" + 
+                        "แบรนด์: "+arr[i].Artist_Name +"<br>" +
+                        "ประเภทสินค้า: "+ arr[i].Product_Type + "<br>"+ 
+                        "สถานะ: "+arr[i].Status_Product + "<br>"+
+                        "ราคา: "+arr[i].Price + " บาท"+"<br>"+"<br>"+
+                        "</div>";
+                    }
+                    
+                    document.getElementById('disp').innerHTML = html;
+                }
+            }
+        }
+        parameters = "kw=" + kw + "&typ=" + typ;
+        xmlhttp.open("post", "search.php");
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send(parameters);
+    }
+    function search() {
+        kw = document.getElementById('kw').value;
+        var typ = "";
+        console.log("kw=" + kw);
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                arr = JSON.parse(this.responseText);
+                console.log(arr);
+                if (arr.length == 0) {
+                    document.getElementById('disp').innerHTML = "Not found";
+                } else {
+                    html = "";
+                    for (i = 0; i < arr.length; i++) {
+                        html +="<div>"+
+                        "รหัสสินค้า: "+ arr[i].Product_Id + "<br>" + 
+                        "ชื่อสินค้า: "+ arr[i].Name_Product + "<br>" + 
+                        "แบรนด์: "+arr[i].Artist_Name +"<br>" +
+                        "ประเภทสินค้า: "+ arr[i].Product_Type + "<br>"+ 
+                        "สถานะ: "+arr[i].Status_Product + "<br>"+
+                        "ราคา: "+arr[i].Price + " บาท"+"<br>"+"<br>"+
+                        "</div>";
+                    }
+                    
+                    document.getElementById('disp').innerHTML = html;
+                }
+            }
+        }
+        parameters = "kw=" + kw + "&typ=" + typ;
+        xmlhttp.open("post", "search.php");
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send(parameters);
+    }
+</script>
+
+
+
+
